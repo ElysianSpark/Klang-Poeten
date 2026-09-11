@@ -2,10 +2,101 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Klangpoeten</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, #403b55 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, #3a4a50 0%, transparent 30%),
+        #111214;
+
+      color: #f3f1ec;
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    main {
+      width: min(900px, 88vw);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+    }
+
+    .line {
+      width: 70px;
+      height: 1px;
+      background: #f3f1ec;
+      margin: 40px 0 30px;
+      opacity: 0.6;
+    }
+
+    p {
+      max-width: 520px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: #d0cdc7;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 28px;
+      left: 6vw;
+      right: 6vw;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8e8e8e;
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        position: static;
+        margin-top: 80px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Klangpoeten</h1>
-  <p>Website im Aufbau.</p>
+
+  <main>
+    <h1>Klangpoeten</h1>
+
+    <div class="line"></div>
+
+    <p>
+      Künstlerkollektiv für Film, Musik und audiovisuelle Arbeiten.
+    </p>
+  </main>
+
+  <footer>
+    <span>Berlin · Brandenburg</span>
+    <span>Website im Aufbau</span>
+  </footer>
+
 </body>
 </html>
