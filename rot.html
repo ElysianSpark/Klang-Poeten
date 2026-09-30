@@ -3,95 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Klang-Poeten | ROT</title>
+  <title>Klang-Poeten</title>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #D94141;
-      color: #f3f1ec;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-
+    body { font-family: Arial, Helvetica, sans-serif; background-color: #B85A5A; color: #f3f1ec; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
     main { width: min(900px, 95vw); }
-
-    h1 {
-      margin: 0 0 60px 0;
-      text-align: center;
-      font-size: clamp(2rem, 8vw, 5rem);
-      font-weight: 300;
-      letter-spacing: -0.06em;
-      color: rgba(243, 241, 236, 0.9);
-    }
-
-    .color-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(110px, 1fr));
-      gap: 30px;
-      max-width: 700px;
-      margin: 0 auto 80px;
-    }
-
-    .color-square {
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-    }
-
-    .color-square:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    }
-
-    .back-link {
-      position: fixed;
-      top: 30px;
-      left: 30px;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(243, 241, 236, 0.7);
-      text-decoration: none;
-    }
-
+    .color-grid { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 30px; max-width: 700px; margin: 0 auto 80px; }
+    .color-square { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 4px; font-size: 1.2rem; color: rgba(17, 18, 20, 0.7); transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+    .color-square:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
+    .back-link { position: fixed; top: 30px; left: 30px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243, 241, 236, 0.7); text-decoration: none; }
     .back-link:hover { color: rgba(243, 241, 236, 1); }
-
-    @media (max-width: 600px) {
-      .color-grid { gap: 20px; }
-      .back-link { top: 20px; left: 20px; font-size: 0.7rem; }
-    }
+    @media (max-width: 600px) { .color-grid { gap: 20px; } .back-link { top: 20px; left: 20px; font-size: 0.7rem; } }
   </style>
 </head>
 <body>
   <a href="index.html" class="back-link">← Zurück</a>
-
   <main>
-    <h1>ROT</h1>
-
     <div class="color-grid">
-      <a href="audio-player.html?palette=rot&tile=1" class="color-square" style="background:#DFDF41;"></a>
-      <a href="audio-player.html?palette=rot&tile=2" class="color-square" style="background:#D9B35B;"></a>
-      <a href="audio-player.html?palette=rot&tile=3" class="color-square" style="background:#D98A5D;"></a>
-
-      <a href="audio-player.html?palette=rot&tile=4" class="color-square" style="background:#BDB2A5;"></a>
-      <a href="audio-player.html?palette=rot&tile=5" class="color-square" style="background:#6C8BA0;"></a>
-      <a href="audio-player.html?palette=rot&tile=6" class="color-square" style="background:#7C6D8A;"></a>
-
-      <a href="audio-player.html?palette=rot&tile=7" class="color-square" style="background:#5B7E8E;"></a>
-      <a href="audio-player.html?palette=rot&tile=8" class="color-square" style="background:#6F6F9A;"></a>
-      <a href="audio-player.html?palette=rot&tile=9" class="color-square" style="background:#4141D9;"></a>
+      <a href="audio-player.html?palette=rot&tile=1" class="color-square" style="background:#B8B85A;">1</a>
+      <a href="audio-player.html?palette=rot&tile=2" class="color-square" style="background:#C5A05A;">2</a>
+      <a href="audio-player.html?palette=rot&tile=3" class="color-square" style="background:#C27B62;">3</a>
+      <a href="audio-player.html?palette=rot&tile=4" class="color-square" style="background:#A99F96;">4</a>
+      <a href="audio-player.html?palette=rot&tile=5" class="color-square" style="background:#667F91;">5</a>
+      <a href="audio-player.html?palette=rot&tile=6" class="color-square" style="background:#746781;">6</a>
+      <a href="audio-player.html?palette=rot&tile=7" class="color-square" style="background:#567683;">7</a>
+      <a href="audio-player.html?palette=rot&tile=8" class="color-square" style="background:#696993;">8</a>
+      <a href="audio-player.html?palette=rot&tile=9" class="color-square" style="background:#5A5AB8;">9</a>
     </div>
   </main>
 </body>
