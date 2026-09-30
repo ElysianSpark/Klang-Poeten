@@ -16,11 +16,14 @@
       color: #f3f1ec;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
-    main { width: min(900px, 90vw); text-align: center; }
+    main {
+      width: min(900px, 88vw);
+      padding-top: 8vh;
+      margin-left: 6vw;
+    }
     h1 {
       margin: 0;
       font-size: clamp(4rem, 12vw, 9rem);
@@ -28,27 +31,60 @@
       letter-spacing: -0.06em;
       line-height: 0.9;
     }
-    .line { width: 70px; height: 1px; background: #f3f1ec; margin: 40px auto 30px; opacity: 0.6; }
-    p { max-width: 520px; margin: 0 auto 80px; font-size: 1.15rem; line-height: 1.6; font-weight: 300; color: #d0cdc7; }
-    .color-squares { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 100px; }
+    .line {
+      width: 70px;
+      height: 1px;
+      background: #f3f1ec;
+      margin: 40px 0 30px;
+      opacity: 0.6;
+    }
+    p {
+      max-width: 520px;
+      margin: 0 0 60px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: #d0cdc7;
+    }
+    .color-squares {
+      display: flex;
+      justify-content: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
     .square {
-      width: 220px;
-      height: 220px;
+      width: 200px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border-radius: 4px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .square:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+    .square:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
     .square-red { background-color: #B85A5A; }
     .square-yellow { background-color: #B8B85A; }
     .square-blue { background-color: #5A5AB8; }
-    footer { position: fixed; left: 6vw; right: 6vw; bottom: 28px; display: flex; justify-content: space-between; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8e8e8e; }
+    footer {
+      position: fixed;
+      bottom: 28px;
+      left: 6vw;
+      right: 6vw;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8e8e8e;
+    }
     @media (max-width: 600px) {
-      .color-squares { gap: 20px; }
-      .square { width: 150px; height: 150px; }
+      main { margin-left: 0; width: min(90vw, 900px); }
+      .color-squares { justify-content: center; }
+      .square { width: 140px; height: 140px; }
       footer { position: static; margin-top: 80px; }
     }
   </style>
@@ -58,12 +94,14 @@
     <h1>Klang-Poeten</h1>
     <div class="line"></div>
     <p>Audiovisuelle Kunst</p>
+
     <div class="color-squares">
       <a href="rot.html" class="square square-red" aria-label="Rote Klangseite"></a>
       <a href="gelb.html" class="square square-yellow" aria-label="Gelbe Klangseite"></a>
       <a href="blau.html" class="square square-blue" aria-label="Blaue Klangseite"></a>
     </div>
   </main>
+
   <footer>
     <span>Berlin · Brandenburg</span>
     <span>Website im Aufbau</span>
