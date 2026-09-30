@@ -3,133 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio-Player</title>
+  <title>Klang-Poeten</title>
   <style>
     * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
+    html, body { margin: 0; min-height: 100%; }
+    body { font-family: Arial, Helvetica, sans-serif; background-color: #5A5AB8; color: #f3f1ec; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    main { width: min(900px, 95vw); }
+    .color-grid { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 30px; max-width: 700px; margin: 0 auto 80px; }
+    .color-square {
+      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      transition: background-color 0.4s ease;
-    }
-
-    .player-wrap {
-      width: min(620px, 90vw);
-      background: rgba(17, 18, 20, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 20px;
-      padding: 28px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.18);
-    }
-
-    .meta {
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 300;
-      letter-spacing: -0.05em;
-    }
-
-    .subtitle {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    .color-box {
-      width: 100%;
-      height: 220px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-
-    audio {
-      width: 100%;
-      filter: saturate(0.8);
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
       text-decoration: none;
-      color: inherit;
-      opacity: 0.8;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      color: rgba(17, 18, 20, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
     }
+    .color-square:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+    .back-link { position: fixed; top: 30px; left: 30px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,241,236,0.7); text-decoration: none; }
+    .back-link:hover { color: rgba(243,241,236,1); }
+    @media (max-width: 600px) { .color-grid { gap: 20px; } .back-link { top: 20px; left: 20px; font-size: 0.7rem; } }
   </style>
 </head>
 <body>
-  <div class="player-wrap">
-    <div class="meta">
-      <h1 id="title">Klang</h1>
-      <div id="subtitle" class="subtitle">Audioplayer</div>
+  <a href="index.html" class="back-link">← Zurück</a>
+  <main>
+    <div class="color-grid">
+      <a href="audio-player.html?palette=blau&tile=1" class="color-square" style="background:#B85A5A;">1</a>
+      <a href="audio-player.html?palette=blau&tile=2" class="color-square" style="background:#C27458;">2</a>
+      <a href="audio-player.html?palette=blau&tile=3" class="color-square" style="background:#B99461;">3</a>
+      <a href="audio-player.html?palette=blau&tile=4" class="color-square" style="background:#9F9185;">4</a>
+      <a href="audio-player.html?palette=blau&tile=5" class="color-square" style="background:#707070;">5</a>
+      <a href="audio-player.html?palette=blau&tile=6" class="color-square" style="background:#6D927E;">6</a>
+      <a href="audio-player.html?palette=blau&tile=7" class="color-square" style="background:#618B94;">7</a>
+      <a href="audio-player.html?palette=blau&tile=8" class="color-square" style="background:#527C91;">8</a>
+      <a href="audio-player.html?palette=blau&tile=9" class="color-square" style="background:#B8B85A;">9</a>
     </div>
-
-    <div id="color-box" class="color-box"></div>
-
-    <audio id="audio" controls preload="none">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      Dein Browser unterstützt keine Audio-Elemente.
-    </audio>
-
-    <div>
-      <a id="back" class="back-link" href="index.html">← zurück</a>
-    </div>
-  </div>
-
-  <script>
-    const palettes = {
-      rot: [
-        '#DFDF41', '#D9B35B', '#D98A5D', '#BDB2A5', '#6C8BA0', '#7C6D8A', '#5B7E8E', '#6F6F9A', '#4141D9'
-      ],
-      gelb: [
-        '#D94141', '#D9845A', '#C98B6B', '#9B8B7A', '#7A6B9B', '#7A8B8B', '#6B9B8B', '#5A7A9B', '#4141D9'
-      ],
-      blau: [
-        '#D94141', '#D97E5A', '#D0A868', '#B7A597', '#7E7E7E', '#78A28D', '#6C9AA3', '#5A8AA1', '#DFDF41'
-      ]
-    };
-
-    const titles = {
-      rot: ['Rot · Klang 1', 'Rot · Klang 2', 'Rot · Klang 3', 'Rot · Klang 4', 'Rot · Klang 5', 'Rot · Klang 6', 'Rot · Klang 7', 'Rot · Klang 8', 'Rot · Klang 9'],
-      gelb: ['Gelb · Klang 1', 'Gelb · Klang 2', 'Gelb · Klang 3', 'Gelb · Klang 4', 'Gelb · Klang 5', 'Gelb · Klang 6', 'Gelb · Klang 7', 'Gelb · Klang 8', 'Gelb · Klang 9'],
-      blau: ['Blau · Klang 1', 'Blau · Klang 2', 'Blau · Klang 3', 'Blau · Klang 4', 'Blau · Klang 5', 'Blau · Klang 6', 'Blau · Klang 7', 'Blau · Klang 8', 'Blau · Klang 9']
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const palette = params.get('palette') || 'rot';
-    const tileIndex = Number(params.get('tile') || 1) - 1;
-
-    const color = palettes[palette][tileIndex] || palettes[palette][0];
-    const title = titles[palette][tileIndex] || titles[palette][0];
-
-    document.body.style.backgroundColor = color;
-    document.getElementById('title').textContent = title;
-    document.getElementById('subtitle').textContent = 'Palette: ' + palette.toUpperCase();
-    document.getElementById('color-box').style.backgroundColor = color;
-
-    const backLink = document.getElementById('back');
-    if (palette === 'rot') backLink.href = 'rot.html';
-    if (palette === 'gelb') backLink.href = 'gelb.html';
-    if (palette === 'blau') backLink.href = 'blau.html';
-  </script>
+  </main>
 </body>
 </html>

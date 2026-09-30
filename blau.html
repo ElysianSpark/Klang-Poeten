@@ -7,13 +7,24 @@
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
-    body { font-family: Arial, Helvetica, sans-serif; background-color: #5A5AB8; color: #f3f1ec; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    body { font-family: Arial, Helvetica, sans-serif; background-color: #B8B85A; color: #1a1a1a; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
     main { width: min(900px, 95vw); }
     .color-grid { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 30px; max-width: 700px; margin: 0 auto 80px; }
-    .color-square { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 4px; font-size: 1.2rem; color: rgba(17, 18, 20, 0.7); transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
-    .color-square:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
-    .back-link { position: fixed; top: 30px; left: 30px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243, 241, 236, 0.7); text-decoration: none; }
-    .back-link:hover { color: rgba(243, 241, 236, 1); }
+    .color-square {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      color: rgba(26, 26, 26, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+    }
+    .color-square:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.18); }
+    .back-link { position: fixed; top: 30px; left: 30px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(26,26,26,0.7); text-decoration: none; }
+    .back-link:hover { color: rgba(26,26,26,1); }
     @media (max-width: 600px) { .color-grid { gap: 20px; } .back-link { top: 20px; left: 20px; font-size: 0.7rem; } }
   </style>
 </head>
@@ -21,15 +32,15 @@
   <a href="index.html" class="back-link">← Zurück</a>
   <main>
     <div class="color-grid">
-      <a href="audio-player.html?palette=blau&tile=1" class="color-square" style="background:#B85A5A;">1</a>
-      <a href="audio-player.html?palette=blau&tile=2" class="color-square" style="background:#C27458;">2</a>
-      <a href="audio-player.html?palette=blau&tile=3" class="color-square" style="background:#B99461;">3</a>
-      <a href="audio-player.html?palette=blau&tile=4" class="color-square" style="background:#9F9185;">4</a>
-      <a href="audio-player.html?palette=blau&tile=5" class="color-square" style="background:#707070;">5</a>
-      <a href="audio-player.html?palette=blau&tile=6" class="color-square" style="background:#6D927E;">6</a>
-      <a href="audio-player.html?palette=blau&tile=7" class="color-square" style="background:#618B94;">7</a>
-      <a href="audio-player.html?palette=blau&tile=8" class="color-square" style="background:#527C91;">8</a>
-      <a href="audio-player.html?palette=blau&tile=9" class="color-square" style="background:#B8B85A;">9</a>
+      <a href="audio-player.html?palette=gelb&tile=1" class="color-square" style="background:#B85A5A;">1</a>
+      <a href="audio-player.html?palette=gelb&tile=2" class="color-square" style="background:#C27B62;">2</a>
+      <a href="audio-player.html?palette=gelb&tile=3" class="color-square" style="background:#B98268;">3</a>
+      <a href="audio-player.html?palette=gelb&tile=4" class="color-square" style="background:#8F8172;">4</a>
+      <a href="audio-player.html?palette=gelb&tile=5" class="color-square" style="background:#70638F;">5</a>
+      <a href="audio-player.html?palette=gelb&tile=6" class="color-square" style="background:#718080;">6</a>
+      <a href="audio-player.html?palette=gelb&tile=7" class="color-square" style="background:#638F80;">7</a>
+      <a href="audio-player.html?palette=gelb&tile=8" class="color-square" style="background:#527C91;">8</a>
+      <a href="audio-player.html?palette=gelb&tile=9" class="color-square" style="background:#5A5AB8;">9</a>
     </div>
   </main>
 </body>

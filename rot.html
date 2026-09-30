@@ -7,30 +7,66 @@
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
-    body { font-family: Arial, Helvetica, sans-serif; background-color: #B85A5A; color: #f3f1ec; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
-    main { width: min(900px, 95vw); }
-    .color-grid { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 30px; max-width: 700px; margin: 0 auto 80px; }
-    .color-square { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 4px; font-size: 1.2rem; color: rgba(17, 18, 20, 0.7); transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
-    .color-square:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
-    .back-link { position: fixed; top: 30px; left: 30px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243, 241, 236, 0.7); text-decoration: none; }
-    .back-link:hover { color: rgba(243, 241, 236, 1); }
-    @media (max-width: 600px) { .color-grid { gap: 20px; } .back-link { top: 20px; left: 20px; font-size: 0.7rem; } }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, #403b55 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, #3a4a50 0%, transparent 30%),
+        #111214;
+      color: #f3f1ec;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    main { width: min(900px, 90vw); text-align: center; }
+    h1 {
+      margin: 0;
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+    }
+    .line { width: 70px; height: 1px; background: #f3f1ec; margin: 40px auto 30px; opacity: 0.6; }
+    p { max-width: 520px; margin: 0 auto 80px; font-size: 1.15rem; line-height: 1.6; font-weight: 300; color: #d0cdc7; }
+    .color-squares { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 100px; }
+    .square {
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 4px;
+    }
+    .square:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+    .square-red { background-color: #B85A5A; }
+    .square-yellow { background-color: #B8B85A; }
+    .square-blue { background-color: #5A5AB8; }
+    footer { position: fixed; left: 6vw; right: 6vw; bottom: 28px; display: flex; justify-content: space-between; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8e8e8e; }
+    @media (max-width: 600px) {
+      .color-squares { gap: 20px; }
+      .square { width: 150px; height: 150px; }
+      footer { position: static; margin-top: 80px; }
+    }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-link">← Zurück</a>
   <main>
-    <div class="color-grid">
-      <a href="audio-player.html?palette=rot&tile=1" class="color-square" style="background:#B8B85A;">1</a>
-      <a href="audio-player.html?palette=rot&tile=2" class="color-square" style="background:#C5A05A;">2</a>
-      <a href="audio-player.html?palette=rot&tile=3" class="color-square" style="background:#C27B62;">3</a>
-      <a href="audio-player.html?palette=rot&tile=4" class="color-square" style="background:#A99F96;">4</a>
-      <a href="audio-player.html?palette=rot&tile=5" class="color-square" style="background:#667F91;">5</a>
-      <a href="audio-player.html?palette=rot&tile=6" class="color-square" style="background:#746781;">6</a>
-      <a href="audio-player.html?palette=rot&tile=7" class="color-square" style="background:#567683;">7</a>
-      <a href="audio-player.html?palette=rot&tile=8" class="color-square" style="background:#696993;">8</a>
-      <a href="audio-player.html?palette=rot&tile=9" class="color-square" style="background:#5A5AB8;">9</a>
+    <h1>Klang-Poeten</h1>
+    <div class="line"></div>
+    <p>Audiovisuelle Kunst</p>
+    <div class="color-squares">
+      <a href="rot.html" class="square square-red" aria-label="Rote Klangseite"></a>
+      <a href="gelb.html" class="square square-yellow" aria-label="Gelbe Klangseite"></a>
+      <a href="blau.html" class="square square-blue" aria-label="Blaue Klangseite"></a>
     </div>
   </main>
+  <footer>
+    <span>Berlin · Brandenburg</span>
+    <span>Website im Aufbau</span>
+  </footer>
 </body>
 </html>
