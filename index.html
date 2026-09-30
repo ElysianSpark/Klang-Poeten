@@ -28,13 +28,13 @@
 
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      padding-left: 6vw;
     }
 
     main {
       width: min(900px, 88vw);
+      text-align: center;
     }
 
     h1 {
@@ -49,7 +49,7 @@
       width: 70px;
       height: 1px;
       background: #f3f1ec;
-      margin: 40px 0 30px;
+      margin: 40px auto 30px;
       opacity: 0.6;
     }
 
@@ -59,20 +59,21 @@
       line-height: 1.6;
       font-weight: 300;
       color: #d0cdc7;
-      margin: 0 0 60px 0;
+      margin: 0 auto 80px auto;
     }
 
     /* Container für die drei Quadrate */
     .color-squares {
       display: flex;
-      gap: 30px;
+      gap: 50px;
+      justify-content: center;
       margin-bottom: 100px;
     }
 
     /* Styling für jedes Quadrat */
     .square {
-      width: 150px;
-      height: 150px;
+      width: 220px;
+      height: 220px;
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -92,17 +93,17 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* Grundfarben für die drei Quadrate */
+    /* Grundfarben mit 20% Entsättigung */
     .square-red {
-      background-color: #FF0000;
+      background-color: #D94141;
     }
 
     .square-yellow {
-      background-color: #FFFF00;
+      background-color: #DFDF41;
     }
 
     .square-blue {
-      background-color: #0000FF;
+      background-color: #4141D9;
     }
 
     footer {
@@ -120,12 +121,12 @@
 
     @media (max-width: 600px) {
       .color-squares {
-        gap: 15px;
+        gap: 25px;
       }
 
       .square {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
       }
 
       footer {
