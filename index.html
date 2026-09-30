@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Klang-Poeten</title>
-
+  <title>Klang-Poeten</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -22,10 +18,8 @@
         radial-gradient(circle at 20% 20%, #403b55 0%, transparent 35%),
         radial-gradient(circle at 80% 70%, #3a4a50 0%, transparent 30%),
         #111214;
-
       color: #f3f1ec;
       min-height: 100vh;
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -33,7 +27,7 @@
     }
 
     main {
-      width: min(900px, 88vw);
+      width: min(900px, 90vw);
       text-align: center;
     }
 
@@ -55,62 +49,50 @@
 
     p {
       max-width: 520px;
+      margin: 0 auto 80px;
       font-size: 1.15rem;
       line-height: 1.6;
       font-weight: 300;
       color: #d0cdc7;
-      margin: 0 auto 80px auto;
     }
 
-    /* Container für die drei Quadrate */
     .color-squares {
       display: flex;
-      gap: 50px;
       justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
       margin-bottom: 100px;
     }
 
-    /* Styling für jedes Quadrat */
     .square {
       width: 220px;
       height: 220px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
       font-size: 0.9rem;
       font-weight: bold;
-      color: #111214;
+      color: rgba(17, 18, 20, 0.8);
       letter-spacing: 0.05em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 4px;
     }
 
-    /* Hover-Effekt: Quadrate werden leicht vergrößert */
     .square:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
-    /* Grundfarben mit 20% Entsättigung */
-    .square-red {
-      background-color: #D94141;
-    }
-
-    .square-yellow {
-      background-color: #DFDF41;
-    }
-
-    .square-blue {
-      background-color: #4141D9;
-    }
+    .square-red { background-color: #D94141; }
+    .square-yellow { background-color: #DFDF41; }
+    .square-blue { background-color: #4141D9; }
 
     footer {
       position: fixed;
-      bottom: 28px;
       left: 6vw;
       right: 6vw;
+      bottom: 28px;
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
@@ -120,15 +102,8 @@
     }
 
     @media (max-width: 600px) {
-      .color-squares {
-        gap: 25px;
-      }
-
-      .square {
-        width: 150px;
-        height: 150px;
-      }
-
+      .color-squares { gap: 20px; }
+      .square { width: 150px; height: 150px; }
       footer {
         position: static;
         margin-top: 80px;
@@ -136,19 +111,12 @@
     }
   </style>
 </head>
-
 <body>
-
   <main>
- <h1>Klang-Poeten</h1>
-
+    <h1>Klang-Poeten</h1>
     <div class="line"></div>
+    <p>Audiovisuelle Kunst</p>
 
-    <p>
-      Audiovisuelle Kunst
-    </p>
-
-    <!-- Drei anklickbare Quadrate -->
     <div class="color-squares">
       <a href="rot.html" class="square square-red">ROT</a>
       <a href="gelb.html" class="square square-yellow">GELB</a>
@@ -160,6 +128,5 @@
     <span>Berlin · Brandenburg</span>
     <span>Website im Aufbau</span>
   </footer>
-
 </body>
 </html>
