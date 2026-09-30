@@ -27,13 +27,14 @@
       min-height: 100vh;
 
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 6vw;
     }
 
     main {
       width: min(900px, 88vw);
-      padding-top: 8vh;
     }
 
     h1 {
@@ -58,6 +59,50 @@
       line-height: 1.6;
       font-weight: 300;
       color: #d0cdc7;
+      margin: 0 0 60px 0;
+    }
+
+    /* Container für die drei Quadrate */
+    .color-squares {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 100px;
+    }
+
+    /* Styling für jedes Quadrat */
+    .square {
+      width: 150px;
+      height: 150px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #111214;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hover-Effekt: Quadrate werden leicht vergrößert */
+    .square:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Grundfarben für die drei Quadrate */
+    .square-red {
+      background-color: #FF0000;
+    }
+
+    .square-yellow {
+      background-color: #FFFF00;
+    }
+
+    .square-blue {
+      background-color: #0000FF;
     }
 
     footer {
@@ -74,6 +119,15 @@
     }
 
     @media (max-width: 600px) {
+      .color-squares {
+        gap: 15px;
+      }
+
+      .square {
+        width: 100px;
+        height: 100px;
+      }
+
       footer {
         position: static;
         margin-top: 80px;
@@ -92,6 +146,13 @@
     <p>
       Audiovisuelle Kunst
     </p>
+
+    <!-- Drei anklickbare Quadrate -->
+    <div class="color-squares">
+      <a href="rot.html" class="square square-red">ROT</a>
+      <a href="gelb.html" class="square square-yellow">GELB</a>
+      <a href="blau.html" class="square square-blue">BLAU</a>
+    </div>
   </main>
 
   <footer>
