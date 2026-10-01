@@ -130,7 +130,7 @@
   
     <button
       type="button"
-      data-sound="assets/music/Pi-6.mp3"
+      data-sound="assets/music/Pi-7.mp3"
       class="pi-soundboard__button"
       style="--button-color: #a05e2c;"
       aria-label="Sound 6 abspielen"
@@ -357,6 +357,20 @@
     });
   });
 
+  const audioUrls = [
+    'Pi-1.mp3',
+    'Pi-2.mp3',
+    'Pi-3.mp3',
+    'Pi-4.mp3',
+    'Pi-5.mp3',
+    'Pi-6.mp3',
+    'Pi-7.mp3',
+    'Pi-8.mp3',
+    'Pi-9.mp3',
+    'Pi-10.mp3',
+    'Pi-11.mp3'
+  ];
+
   window.addEventListener('load', () => {
     window.setTimeout(() => {
       void syncCachedState();
@@ -367,6 +381,19 @@
       navigator.serviceWorker?.controller?.postMessage({ type: 'CACHE_STATUS_REQUEST' });
       return syncCachedState();
     }).catch(() => undefined);
+
+    Promise.all(
+        audioUrls.map(url =>
+          fetch(url)
+            .then(res => {
+              if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+              return res.blob(); // fully consumes the stream into browser cache
+            })
+            .catch(err => console.warn(`Failed to prefetch ${url}:`, err))
+        )
+      ).then(() => {
+        console.log('All audio files prefetched.');
+      });
   });
 
   navigator.serviceWorker?.addEventListener('controllerchange', () => {
