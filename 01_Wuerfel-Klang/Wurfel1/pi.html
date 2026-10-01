@@ -374,6 +374,7 @@
         ensureTrackCached(url)
           .then(() => syncCachedState())
           .catch(err => console.error('Cache failed for:', url, err));
+        currentAudio = new Audio(url);
       }
     });
 
