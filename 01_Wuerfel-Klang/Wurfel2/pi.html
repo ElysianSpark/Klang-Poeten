@@ -283,29 +283,33 @@
 
   const ensureTrackCached = async (sampleUrl) => {
     if (!('caches' in window)) {
+      console.warn('Cache API not supported or not in a secure context (HTTPS/localhost)');
       return false;
     }
 
-    const existing = await caches.match(sampleUrl);
+    try {
+      const existing = await caches.match(sampleUrl);
+      if (existing) return true;
 
-    if (existing) {
+      const response = await fetch(sampleUrl, { cache: 'reload' });
+
+      if (!response.ok) {
+        console.warn(`Fetch returned status ${response.status} for ${sampleUrl}`);
+        return false;
+      }
+
+      const cache = await caches.open(MUSIC_CACHE_NAME);
+      await cache.put(sampleUrl, response.clone());
       return true;
-    }
-
-    const response = await fetch(sampleUrl, { cache: 'reload' });
-
-    if (!response.ok) {
+    } catch (err) {
+      console.error(`Failed to cache ${sampleUrl}:`, err);
       return false;
     }
-
-    const cache = await caches.open(MUSIC_CACHE_NAME);
-    await cache.put(sampleUrl, response.clone());
-
-    return true;
   };
 
   const syncCachedState = async () => {
     if (!('caches' in window)) {
+      console.warn('Cache API not supported or not in a secure context (HTTPS/localhost)');
       return;
     }
 
@@ -313,6 +317,7 @@
       const sampleUrl = button.dataset.sound;
 
       if (!sampleUrl) {
+        console.warn('No sampleUrl in button.dataset.sound');
         return;
       }
 
@@ -348,7 +353,7 @@
 
       const sampleUrl = button.dataset.sound;
       const cachePromise = sampleUrl
-        ? ensureTrackCached(sampleUrl).then(() => syncCachedState()).catch(() => undefined)
+        ? ensureTrackCached(sampleUrl).then(() => syncCachedState()) .catch(err => console.error('Cache failed for:', initialUrl, err))
         : Promise.resolve();
 
       currentAudio = new Audio(sampleUrl);
