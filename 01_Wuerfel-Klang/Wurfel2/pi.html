@@ -324,11 +324,13 @@
   buttons.forEach(button => {
     button.setAttribute('aria-pressed', 'false');
 
-    sampleUrl1 = button.dataset.sound;
-    cachePromise1 = sampleUrl1
-       ? ensureTrackCached(sampleUrl1).then(() => syncCachedState()).catch(() => undefined)
-       : Promise.resolve();
-    await cachePromise1;
+    // Pre-cache in the background without blocking event setup
+    const initialUrl = button.dataset.sound;
+    if (initialUrl) {
+      ensureTrackCached(initialUrl)
+        .then(() => syncCachedState())
+        .catch(() => undefined);
+    }
 
     button.addEventListener('click', async () => {
       if (button === currentButton) {
