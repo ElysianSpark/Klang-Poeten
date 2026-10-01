@@ -282,7 +282,7 @@
   };
 
   const ensureTrackCached = async (sampleUrl) => {
-    Console.log("Ensuring track is cached", sampleUrl);
+    console.log("Ensuring track is cached", sampleUrl);
     if (!('caches' in window)) {
       console.warn('Cache API not supported or not in a secure context (HTTPS/localhost)');
       return false;
