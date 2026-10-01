@@ -366,12 +366,13 @@
   });
 
   window.addEventListener('load', () => {
-    // Re-query if 'buttons' was queried before DOM was ready
+    console.log("populating cache")
     const soundButtons = buttons.length ? buttons : document.querySelectorAll('[data-sound]');
 
     soundButtons.forEach(button => {
       const url = button.dataset.sound;
       if (url) {
+        console.log("populating cache for ${url}")
         ensureTrackCached(url)
           .then(() => syncCachedState())
           .catch(err => console.error('Cache failed for:', url, err));
