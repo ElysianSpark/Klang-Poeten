@@ -329,14 +329,6 @@
   buttons.forEach(button => {
     button.setAttribute('aria-pressed', 'false');
 
-    const initialUrl = button.dataset.sound;
-    if (initialUrl) {
-      console.log(initialUrl)
-      ensureTrackCached(initialUrl)
-        .then(() => syncCachedState())
-        .catch(err => console.error('Cache failed for:', initialUrl, err));
-    }
-
     button.addEventListener('click', async () => {
       if (button === currentButton) {
         resetSoundboard();
@@ -368,6 +360,18 @@
         resetSoundboard();
       }
     });
+  });
+
+  window.addEventListener('load', () => {
+    const soundButtons = buttons.length ? buttons : document.querySelectorAll('[data-sound]');
+
+    soundButtons.forEach(button => {
+      const url = button.dataset.sound;
+      if (url) {
+        ensureTrackCached(url)
+          .then(() => syncCachedState())
+          .catch(err => console.error('Cache failed for:', url, err));
+      }
   });
 
   window.addEventListener('load', () => {
