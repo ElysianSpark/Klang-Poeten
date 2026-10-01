@@ -366,13 +366,13 @@
   });
 
   window.addEventListener('load', () => {
-    console.log("populating cache")
+    console.log("Populating cache");
     const soundButtons = buttons.length ? buttons : document.querySelectorAll('[data-sound]');
 
     soundButtons.forEach(button => {
       const url = button.dataset.sound;
       if (url) {
-        console.log("populating cache for ${url}")
+        console.log("Populating cache for:", url);
         ensureTrackCached(url)
           .then(() => syncCachedState())
           .catch(err => console.error('Cache failed for:', url, err));
