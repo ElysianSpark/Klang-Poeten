@@ -324,6 +324,11 @@
   buttons.forEach(button => {
     button.setAttribute('aria-pressed', 'false');
 
+    const sampleUrl = button.dataset.sound;
+    const cachePromise = sampleUrl
+       ? ensureTrackCached(sampleUrl).then(() => syncCachedState()).catch(() => undefined)
+       : Promise.resolve();
+
     button.addEventListener('click', async () => {
       if (button === currentButton) {
         resetSoundboard();
@@ -357,20 +362,6 @@
     });
   });
 
-  const audioUrls = [
-    'assets/music/Pi-1.mp3',
-    'assets/music/Pi-2.mp3',
-    'assets/music/Pi-3.mp3',
-    'assets/music/Pi-4.mp3',
-    'assets/music/Pi-5.mp3',
-    'assets/music/Pi-6.mp3',
-    'assets/music/Pi-7.mp3',
-    'assets/music/Pi-8.mp3',
-    'assets/music/Pi-9.mp3',
-    'assets/music/Pi-10.mp3',
-    'assets/music/Pi-11.mp3'
-  ];
-
   window.addEventListener('load', () => {
     window.setTimeout(() => {
       void syncCachedState();
@@ -381,19 +372,6 @@
       navigator.serviceWorker?.controller?.postMessage({ type: 'CACHE_STATUS_REQUEST' });
       return syncCachedState();
     }).catch(() => undefined);
-
-    Promise.all(
-        audioUrls.map(url =>
-          fetch(url)
-            .then(res => {
-              if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-              return res.blob(); // fully consumes the stream into browser cache
-            })
-            .catch(err => console.warn(`Failed to prefetch ${url}:`, err))
-        )
-      ).then(() => {
-        console.log('All audio files prefetched.');
-      });
   });
 
   navigator.serviceWorker?.addEventListener('controllerchange', () => {
