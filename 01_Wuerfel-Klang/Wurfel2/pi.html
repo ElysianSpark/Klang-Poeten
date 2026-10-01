@@ -363,6 +363,7 @@
   });
 
   window.addEventListener('load', () => {
+    // Re-query if 'buttons' was queried before DOM was ready
     const soundButtons = buttons.length ? buttons : document.querySelectorAll('[data-sound]');
 
     soundButtons.forEach(button => {
@@ -372,6 +373,12 @@
           .then(() => syncCachedState())
           .catch(err => console.error('Cache failed for:', url, err));
       }
+    });
+
+    navigator.serviceWorker?.ready.then(() => {
+      navigator.serviceWorker?.controller?.postMessage({ type: 'CACHE_STATUS_REQUEST' });
+      return syncCachedState();
+    }).catch(() => undefined);
   });
 
   window.addEventListener('load', () => {
