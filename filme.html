@@ -68,7 +68,7 @@
     footer a { color: #d0cdc7; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
     html.video-open { overflow: hidden; }
     .video-dialog {
-      width: min(1000px, 94vw); max-height: calc(100dvh - 32px); margin: auto;
+      width: min(1000px, 94vw, calc((100dvh - 180px) * var(--video-ratio, 1.7777778))); max-height: calc(100dvh - 32px); margin: auto;
       padding: clamp(14px, 3vw, 24px); border: 1px solid #44454a; border-radius: 6px;
       background: #111214; color: #f3f1ec;
     }
@@ -142,10 +142,14 @@
         </div>
         <h2>Love is Murder</h2>
       </a>
-      <div class="film-placeholder" aria-label="Filmplatz 6, noch nicht belegt">
-        <div class="film-image"><span class="placeholder-number" aria-hidden="true">6</span></div>
-        <h2>Noch frei</h2>
-      </div>
+      <a class="film-card" href="https://vimeo.com/81508464" data-video-id="81508464" data-title="Tanguera" data-player-title="Tanguera" data-video-width="640" data-video-height="480" aria-label="Tanguera abspielen" aria-haspopup="dialog" aria-controls="video-dialog">
+        <div class="film-image">
+          <img src="https://i.vimeocdn.com/video/457655029-b02effe82fe0714653b21c590bfe09de9c24d63c0e674b91b89b9b31f5fa0481-d_640?region=us" alt="" width="640" height="480" decoding="async">
+          <span class="film-number" aria-hidden="true">6</span>
+          <span class="film-duration" aria-label="Laufzeit 3 Minuten 29 Sekunden">3:29</span>
+        </div>
+        <h2>Tanguera</h2>
+      </a>
     </div>
   </main>
   <footer>
@@ -178,6 +182,12 @@
           activeTrigger = trigger;
           title.textContent = trigger.dataset.title;
           frame.title = trigger.dataset.playerTitle;
+          const videoWidth = Number(trigger.dataset.videoWidth) || 1920;
+          const videoHeight = Number(trigger.dataset.videoHeight) || 1080;
+          frame.width = videoWidth;
+          frame.height = videoHeight;
+          frame.style.aspectRatio = videoWidth + ' / ' + videoHeight;
+          dialog.style.setProperty('--video-ratio', String(videoWidth / videoHeight));
           fallback.href = trigger.href;
           const embed = new URL('https://player.vimeo.com/video/' + trigger.dataset.videoId);
           embed.search = new URLSearchParams({
