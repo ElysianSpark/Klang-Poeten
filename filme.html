@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filme | Klang-Poeten</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap">
+  <style>
+    @font-face {
+      font-family: 'KP Helvetica Light';
+      src: local('HelveticaNeue-Light'), local('Helvetica Neue Light');
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, #403b55 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, #3a4a50 0%, transparent 30%),
+        #111214;
+      color: #f3f1ec;
+      min-height: 100vh;
+    }
+    a { color: #f3f1ec; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #f3f1ec; outline-offset: 6px; }
+    main { width: min(1120px, 88vw); margin: 0 auto; padding: 40px 0 60px; }
+    .back-link {
+      display: inline-block;
+      padding: 10px 0;
+      margin-bottom: 42px;
+      color: #d0cdc7;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .back-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 0.25em; }
+    h1 {
+      margin: 0;
+      font-family: 'KP Helvetica Light', 'Roboto', Arial, sans-serif;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 300;
+      letter-spacing: 0.015em;
+      line-height: 1.1;
+    }
+    .line { width: 70px; height: 1px; background: #f3f1ec; margin: 30px 0 40px; opacity: 0.6; }
+    .film-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 36px 28px; }
+    .film-card { display: block; min-width: 0; text-decoration: none; color: #fff; }
+    .film-card:visited { color: #fff; }
+    .film-image { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; background: #707070; }
+    .film-image img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(1); transform: scale(1);
+      transition: transform 0.6s ease;
+    }
+    .film-card:hover .film-image img, .film-card:focus-visible .film-image img { transform: scale(1.04); }
+    .film-number, .film-duration { position: absolute; padding: 6px 9px; background: rgba(0, 0, 0, 0.72); color: #fff; font-size: 0.8rem; line-height: 1.2; }
+    .film-number { top: 12px; left: 12px; }
+    .film-duration { bottom: 12px; right: 12px; font-variant-numeric: tabular-nums; }
+    .film-card h2 { margin: 16px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 400; overflow-wrap: anywhere; }
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; width: min(1120px, 88vw); margin: 0 auto; padding-bottom: 28px; color: #aaa7a1; font-size: 0.8rem; }
+    footer span { letter-spacing: 0.08em; text-transform: uppercase; }
+    footer a { color: #d0cdc7; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
+    html.video-open { overflow: hidden; }
+    .video-dialog {
+      width: min(1000px, 94vw); max-height: calc(100dvh - 32px); margin: auto;
+      padding: clamp(14px, 3vw, 24px); border: 1px solid #44454a; border-radius: 6px;
+      background: #111214; color: #f3f1ec;
+    }
+    .video-dialog::backdrop { background: rgba(0, 0, 0, 0.85); }
+    .video-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+    .video-header h2 { margin: 0; font-size: 1.2rem; font-weight: 400; line-height: 1.4; }
+    .video-close { flex-shrink: 0; min-height: 44px; padding: 8px 12px; border: 1px solid #777; border-radius: 4px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+    .video-close:hover { background: #303136; }
+    .video-frame { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; background: #000; }
+    .video-fallback { display: inline-block; margin-top: 16px; color: #d0cdc7; font-size: 0.9rem; text-underline-offset: 0.2em; }
+    @media (max-width: 600px) {
+      main { padding-top: 24px; }
+      .back-link { margin-bottom: 26px; }
+      .film-grid { gap: 32px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .film-image img { transition: none; }
+      .film-card:hover .film-image img, .film-card:focus-visible .film-image img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back-link" href="index.html">← Klang-Poeten</a>
+    <h1>Filme</h1>
+    <div class="line" aria-hidden="true"></div>
+    <div class="film-grid">
+      <a class="film-card" href="https://vimeo.com/1226326730" data-video-id="1226326730" data-title="Sehnsucht, zerlegt" data-player-title="Sehnsucht, zerlegt - ein Dark Poetry Film der Klang-Poeten mit Untertiteln" aria-label="Sehnsucht, zerlegt abspielen" aria-haspopup="dialog" aria-controls="video-dialog">
+        <div class="film-image">
+          <img src="https://i.vimeocdn.com/video/2219252265-d88153324a12f8bc7aef7f806867d2ec8172f5b50278d815ced079b69222c882-d_295x166?region=us" alt="" width="640" height="360" decoding="async">
+          <span class="film-number" aria-hidden="true">1</span>
+          <span class="film-duration" aria-label="Laufzeit 4 Minuten 48 Sekunden">4:48</span>
+        </div>
+        <h2>Sehnsucht, zerlegt</h2>
+      </a>
+      <a class="film-card" href="https://vimeo.com/718454896" data-video-id="718454896" data-title="Gewesen – Komposition" data-player-title="Gewesen - Komposition" aria-label="Gewesen – Komposition abspielen" aria-haspopup="dialog" aria-controls="video-dialog">
+        <div class="film-image">
+          <img src="https://i.vimeocdn.com/video/1447481019-ea9678227faad9e3986922949cba0f11e5636acb24f2e441888c89b960620a47-d_640?region=us" alt="" width="640" height="360" decoding="async">
+          <span class="film-number" aria-hidden="true">2</span>
+          <span class="film-duration" aria-label="Laufzeit 8 Minuten 22 Sekunden">8:22</span>
+        </div>
+        <h2>Gewesen – Komposition</h2>
+      </a>
+      <a class="film-card" href="https://vimeo.com/708615250" data-video-id="708615250" data-title="Die Frühlinge" data-player-title="Die Frühlinge" aria-label="Die Frühlinge abspielen" aria-haspopup="dialog" aria-controls="video-dialog">
+        <div class="film-image">
+          <img src="https://i.vimeocdn.com/video/1431869884-a80d80b58ec6395d3699e56c0bec305da837c3daab553a8fe161b10724ac94d0-d_295x166?region=us" alt="" width="640" height="360" decoding="async">
+          <span class="film-number" aria-hidden="true">3</span>
+          <span class="film-duration" aria-label="Laufzeit 2 Minuten 45 Sekunden">2:45</span>
+        </div>
+        <h2>Die Frühlinge</h2>
+      </a>
+      <a class="film-card" href="https://vimeo.com/593918886" data-video-id="593918886" data-title="Die Murmel" data-player-title="Die Murmel Kurzfilm" aria-label="Die Murmel abspielen" aria-haspopup="dialog" aria-controls="video-dialog">
+        <div class="film-image">
+          <img src="https://i.vimeocdn.com/video/1227028346-843d6683f1738d5899a618ab279281a1f5b9675bdb656d26c968622e99c2e76a-d_295x166?region=us" alt="" width="640" height="360" decoding="async">
+          <span class="film-number" aria-hidden="true">4</span>
+          <span class="film-duration" aria-label="Laufzeit 6 Minuten 0 Sekunden">6:00</span>
+        </div>
+        <h2>Die Murmel</h2>
+      </a>
+    </div>
+  </main>
+  <footer>
+    <span>Berlin · Brandenburg</span>
+    <a href="mailto:werkstatt@klang-poeten.de">werkstatt@klang-poeten.de</a>
+  </footer>
+  <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-title">
+    <div class="video-header">
+      <h2 id="video-title">Film</h2>
+      <button class="video-close" id="video-close" type="button" autofocus>Schließen</button>
+    </div>
+    <iframe class="video-frame" id="video-frame" width="1920" height="1080"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" title="Klang-Poeten Film" allowfullscreen></iframe>
+    <a class="video-fallback" id="video-fallback" href="https://vimeo.com/1226326730" target="_blank" rel="noopener noreferrer">Auf Vimeo ansehen</a>
+  </dialog>
+  <script>
+    (() => {
+      const dialog = document.getElementById('video-dialog');
+      const frame = document.getElementById('video-frame');
+      const title = document.getElementById('video-title');
+      const fallback = document.getElementById('video-fallback');
+      let activeTrigger = null;
+
+      document.querySelectorAll('.film-card').forEach(trigger => {
+        trigger.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          if (typeof dialog.showModal !== 'function') return;
+          event.preventDefault();
+          activeTrigger = trigger;
+          title.textContent = trigger.dataset.title;
+          frame.title = trigger.dataset.playerTitle;
+          fallback.href = trigger.href;
+          const embed = new URL('https://player.vimeo.com/video/' + trigger.dataset.videoId);
+          embed.search = new URLSearchParams({
+            autoplay: '1', playsinline: '1', title: '0', byline: '0', portrait: '0', badge: '0'
+          }).toString();
+          dialog.showModal();
+          document.documentElement.classList.add('video-open');
+          frame.src = embed.href;
+        });
+      });
+
+      document.getElementById('video-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('close', () => {
+        frame.removeAttribute('src');
+        document.documentElement.classList.remove('video-open');
+        if (activeTrigger) activeTrigger.focus();
+      });
+      dialog.addEventListener('click', event => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right ||
+            event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+      });
+    })();
+  </script>
+</body>
+</html>
