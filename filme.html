@@ -46,7 +46,7 @@
       line-height: 1.1;
     }
     .line { width: 70px; height: 1px; background: #f3f1ec; margin: 30px 0 40px; opacity: 0.6; }
-    .film-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 36px 28px; }
+    .film-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
     .film-card { display: block; min-width: 0; text-decoration: none; color: #fff; }
     .film-card:visited { color: #fff; }
     .film-image { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; background: #707070; }
@@ -59,7 +59,10 @@
     .film-number, .film-duration { position: absolute; padding: 6px 9px; background: rgba(0, 0, 0, 0.72); color: #fff; font-size: 0.8rem; line-height: 1.2; }
     .film-number { top: 12px; left: 12px; }
     .film-duration { bottom: 12px; right: 12px; font-variant-numeric: tabular-nums; }
-    .film-card h2 { margin: 16px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 400; overflow-wrap: anywhere; }
+    .film-placeholder { min-width: 0; color: #d0cdc7; }
+    .film-placeholder .film-image { display: grid; place-items: center; background: #353538; }
+    .placeholder-number { font-family: 'KP Helvetica Light', 'Roboto', Arial, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; color: #ffffff; }
+    .film-card h2, .film-placeholder h2 { margin: 16px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 400; overflow-wrap: anywhere; }
     footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; width: min(1120px, 88vw); margin: 0 auto; padding-bottom: 28px; color: #aaa7a1; font-size: 0.8rem; }
     footer span { letter-spacing: 0.08em; text-transform: uppercase; }
     footer a { color: #d0cdc7; text-underline-offset: 0.2em; overflow-wrap: anywhere; }
@@ -76,6 +79,12 @@
     .video-close:hover { background: #303136; }
     .video-frame { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; background: #000; }
     .video-fallback { display: inline-block; margin-top: 16px; color: #d0cdc7; font-size: 0.9rem; text-underline-offset: 0.2em; }
+    @media (max-width: 800px) {
+      .film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .film-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 600px) {
       main { padding-top: 24px; }
       .back-link { margin-bottom: 26px; }
@@ -125,6 +134,14 @@
         </div>
         <h2>Die Murmel</h2>
       </a>
+      <div class="film-placeholder" aria-label="Filmplatz 5, noch nicht belegt">
+        <div class="film-image"><span class="placeholder-number" aria-hidden="true">5</span></div>
+        <h2>Noch frei</h2>
+      </div>
+      <div class="film-placeholder" aria-label="Filmplatz 6, noch nicht belegt">
+        <div class="film-image"><span class="placeholder-number" aria-hidden="true">6</span></div>
+        <h2>Noch frei</h2>
+      </div>
     </div>
   </main>
   <footer>
